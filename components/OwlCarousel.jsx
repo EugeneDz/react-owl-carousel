@@ -123,6 +123,18 @@ class OwlCarousel extends Component {
         this.destory();
 	}
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props !== nextProps) {
+          return true;
+        }
+
+        if (this.state !== nextState) {
+          return true;
+        }
+
+        return false;
+    }
+
     componentDidUpdate() {
         this.owlCarousel = $(this.inst);
         this.owlCarousel.owlCarousel(this.options);
@@ -131,6 +143,7 @@ class OwlCarousel extends Component {
     componentWillUnmount() {
         this.destory();
     }
+
 
     next(speed) {
         if (typeof(speed) == 'number') {
