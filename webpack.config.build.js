@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 var config = {
-	devtool: 'eval',
 	entry:  {
 		OwlCarousel: './components/OwlCarousel.jsx'
 	},
@@ -67,11 +66,10 @@ module.exports = function(env) {
 	if (env && env.minimize) {
 		config.plugins.push(
 			new webpack.optimize.UglifyJsPlugin({
-				sourceMap: true,
+				sourceMap: false,
 				comments: false
 			})
 		);
-		config.devtool = 'source-map';
 		config.output.filename = "[name].min.js";
 	}
 	
